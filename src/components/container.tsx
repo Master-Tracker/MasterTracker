@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 
 export function Container() {
   return (
-    <div>
+    <div className='z-0 bg-primary'>
       <Outlet/>
     </div>
   )
