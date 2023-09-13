@@ -1,14 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import {FaArrowLeft} from 'react-icons/fa';
+import React, {useState} from 'react';
+import { NavLink} from 'react-router-dom';
 import {FiUsers} from 'react-icons/fi';
 import {HiOutlineBell, HiOutlineDocumentText} from 'react-icons/hi';
-import {MdOutlineDashboardCustomize} from 'react-icons/md';
+import {MdOutlineDashboardCustomize, MdMenu} from 'react-icons/md';
 import {PiBookOpenTextDuotone} from 'react-icons/pi';
 
+
 export function Sidebar(){
+
+  const [open, setOpen] = useState(true);
+
   return (
-    <nav className='flex flex-col w-[250px] h-screen overflow-hidden p-4 bg-secondary justify-between'>
+    <div className={`${open ? "w-64" : "w-16"} relative duration-300 flex flex-col h-screen overflow-hidden p-4 bg-secondary justify-between`}>
       <div>
         <div className='flex mb-8'>   
               <svg width="55" height="56" viewBox="0 0 55 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,21 +21,39 @@ export function Sidebar(){
               <path d="M40.1826 13.8492L27.1629 26.8689L14.1328 13.8388C15.8428 12.1288 17.8731 10.7726 20.1078 9.84763C22.3424 8.92268 24.7377 8.44711 27.1567 8.44807C29.5757 8.44904 31.9712 8.92652 34.2062 9.85325C36.4412 10.78 38.472 12.1378 40.1826 13.8492Z" fill="#EE6C4D"/>
               </svg>
               <h1 className='pl-4 text-3xl font-bold text-brandColor2'>Master <span className='text-brandColor1'>Tracker</span></h1>
-              <button className='p-2 duration-300 text-brandColor1 hover:text-brandColor2'><FaArrowLeft/></button>
+              <button 
+              onClick={()=> setOpen(!open)}
+              className='absolute p-2 duration-300 top-7 right-1 text-brandColor1 hover:text-brandColor2'><MdMenu size={25}/></button>
         </div>
 
-          <div className='space-y-3'>
-            <Link to='/dashboard' className='flex p-1.5 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary'>
-              <MdOutlineDashboardCustomize size={25} className='mr-2'/> Dashboard</Link>
+          <div className='space-y-2'>
+            <NavLink 
+            to='/dashboard' 
+            className={(navData) =>
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+            }>
+            <MdOutlineDashboardCustomize size={25} className='mr-2'/> Dashboard</NavLink>
 
-            <Link to='/user-history' className='flex p-1.5 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary'>
-            <FiUsers size={25} className='mr-2'/> User History</Link>
+            <NavLink 
+            to='/user-history' 
+            className={(navData) =>
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+            }>
+            <FiUsers size={25} className='mr-2'/> User History</NavLink>
 
-            <Link to='/user-manual' className='flex p-1.5 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary'>
-            <PiBookOpenTextDuotone size={25} className='mr-2'/> User Manual</Link>
+            <NavLink 
+            to='/user-manual' 
+            className={(navData) =>
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+            }>
+            <PiBookOpenTextDuotone size={25} className='mr-2'/> User Manual</NavLink>
 
-            <Link to='/documents' className='flex p-1.5 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary'>
-            <HiOutlineDocumentText size={25} className='mr-2'/> Documents</Link>
+            <NavLink 
+            to='/documents' 
+            className={(navData) =>
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+            }>
+            <HiOutlineDocumentText size={25} className='mr-2'/> Documents</NavLink>
           </div>
       </div>
         
@@ -42,6 +63,6 @@ export function Sidebar(){
           <p className='pl-3 font-bold text-primary'>Support Master<br/> Tracker</p>
         </div>
         
-    </nav>
+    </div>
   )
 }
