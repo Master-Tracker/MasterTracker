@@ -14,7 +14,10 @@ module.exports = {
         alertGreen: '#52FF00',
         alertYellow: '#EEB000',
         alertRed: '#DB4437'
-      }
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
     },
     container: {
       center: true,

@@ -7,10 +7,7 @@ import { Container } from '../../components/container';
 export function Main () {
     return (
         <> 
-        <Helmet>
-            <title>Master Tracker</title>
-        </Helmet>
-        <div className='flex w-full h-screen'>
+        <div className='flex w-full h-screen font-inter'>
             <Sidebar/>
             <Router/>
             <Container/>

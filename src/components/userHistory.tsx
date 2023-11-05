@@ -2,6 +2,8 @@ import React from 'react'
 
 export function UserHistory() {
   return (
-    <div>User History</div>
+    <div className='font-inter'>
+      User History
+    </div>
   )
 }
