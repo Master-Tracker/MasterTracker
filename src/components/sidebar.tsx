@@ -11,7 +11,7 @@ export function Sidebar(){
   const [open, setOpen] = useState(true);
 
   return (
-    <div className={`${open ? "w-64" : "w-20"} relative duration-300 flex flex-col h-screen overflow-hidden p-4 bg-secondary justify-between`}>
+    <div className={`${open ? "w-64" : "w-20 "} relative duration-300 flex flex-col h-screen overflow-hidden p-5 bg-secondary justify-between`}>
       <div>
         <div className='flex mb-8'>  
           <div className={`${!open && "opacity-0 overflow-hidden"} duration-300 flex space-x-2`}>
@@ -32,7 +32,7 @@ export function Sidebar(){
             <NavLink 
             to='/dashboard' 
             className={(navData) =>
-              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-300 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
             }>
 
               <span className='flex'>
@@ -46,7 +46,7 @@ export function Sidebar(){
             <NavLink 
             to='/user-history' 
             className={(navData) =>
-              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold hover:duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold hover:duration-300 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
             }>
               <span className='flex'>
                 <FiUsers size={25}/>
@@ -59,7 +59,7 @@ export function Sidebar(){
             <NavLink 
             to='/user-manual' 
             className={(navData) =>
-              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-300 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
             }>
               <span className='flex'>
                 <PiBookOpenTextDuotone size={25}/>
@@ -72,7 +72,7 @@ export function Sidebar(){
             <NavLink 
             to='/documents' 
             className={(navData) =>
-              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-300 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
             }>
               <span className='flex'>
                 <HiOutlineDocumentText size={25}/>
@@ -87,7 +87,7 @@ export function Sidebar(){
 
         <div className='flex p-3 rounded-lg bg-brandColor1'>
           <span className='flex items-center justify-start'>
-            <HiOutlineBell size={25} className='text-brandColor2'/>
+            <HiOutlineBell size={25} className='-ml-1 text-brandColor2'/>
               <span className={`${!open && "opacity-0 overflow-hidden" } pl-3 whitespace-pre duration-200 text-primary font-semibold`}>
                 Support Master<br/>Tracker
               </span>

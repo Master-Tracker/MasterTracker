@@ -10,7 +10,7 @@ export function Main () {
         <Helmet>
             <title>Master Tracker</title>
         </Helmet>
-        <div className='flex h-screen'>
+        <div className='flex w-full h-screen'>
             <Sidebar/>
             <Router/>
             <Container/>
