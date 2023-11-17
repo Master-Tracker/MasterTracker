@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import { NavLink} from 'react-router-dom';
-import {FiUsers} from 'react-icons/fi';
 import {HiOutlineBell, HiOutlineDocumentText} from 'react-icons/hi';
 import {MdOutlineDashboardCustomize, MdMenu} from 'react-icons/md';
-import {PiBookOpenTextDuotone} from 'react-icons/pi';
+import {PiBookOpenTextDuotone, PiUsersBold, PiWrenchBold} from 'react-icons/pi';
 
 
 export function Sidebar(){
@@ -11,7 +10,7 @@ export function Sidebar(){
   const [open, setOpen] = useState(true);
 
   return (
-    <div className={`${open ? "w-64" : "w-20 "} relative duration-300 flex flex-col h-screen overflow-hidden p-5 bg-secondary justify-between`}>
+    <div className={`${open ? "w-64" : "w-20 "} z-10 relative duration-300 flex flex-col h-screen overflow-hidden p-5 bg-[#E7E7E7] justify-between`}>
       <div>
         <div className='flex mb-8'>  
           <div className={`${!open && "opacity-0 overflow-hidden"} duration-300 flex space-x-2`}>
@@ -21,7 +20,7 @@ export function Sidebar(){
               <path d="M41.8584 41.5856L28.8387 28.5659L41.8688 15.5358C43.5788 17.2458 44.935 19.2761 45.86 21.5108C46.7849 23.7455 47.2605 26.1407 47.2595 28.5597C47.2585 30.9787 46.7811 33.3742 45.8543 35.6092C44.9276 37.8442 43.5698 39.875 41.8584 41.5856Z" fill="#3D5A80"/>
               <path d="M40.1826 13.8492L27.1629 26.8689L14.1328 13.8388C15.8428 12.1288 17.8731 10.7726 20.1078 9.84763C22.3424 8.92268 24.7377 8.44711 27.1567 8.44807C29.5757 8.44904 31.9712 8.92652 34.2062 9.85325C36.4412 10.78 38.472 12.1378 40.1826 13.8492Z" fill="#EE6C4D"/>
               </svg>
-              <h1 className={`text-3xl font-bold text-brandColor2 duration-200`}>Master <span className='text-brandColor1'>Tracker</span></h1>
+              <h1 className={`pointer-events-none text-3xl font-black text-brandColor2 duration-200`}>Master <span className='-ml-1 text-brandColor1'>Tracker</span></h1>
           </div> 
               <button 
               onClick={()=> setOpen(!open)}
@@ -32,7 +31,7 @@ export function Sidebar(){
             <NavLink 
             to='/dashboard' 
             className={(navData) =>
-              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-300 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-bold" : "flex p-2 duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
             }>
 
               <span className='flex'>
@@ -46,10 +45,10 @@ export function Sidebar(){
             <NavLink 
             to='/user-history' 
             className={(navData) =>
-              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold hover:duration-300 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-bold" : "flex p-2 hover:duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
             }>
               <span className='flex'>
-                <FiUsers size={25}/>
+                <PiUsersBold size={25}/>
                 <span className={`${!open && "opacity-0 overflow-hidden" } pl-3 whitespace-pre duration-200`}>
                     User History
                 </span>
@@ -59,10 +58,10 @@ export function Sidebar(){
             <NavLink 
             to='/user-manual' 
             className={(navData) =>
-              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-300 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-bold" : "flex p-2 duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
             }>
               <span className='flex'>
-                <PiBookOpenTextDuotone size={25}/>
+                <PiWrenchBold size={25}/>
                 <span className={`${!open && "opacity-0 overflow-hidden" } pl-3 whitespace-pre duration-200`}>
                     User Manual
                 </span>
@@ -72,7 +71,7 @@ export function Sidebar(){
             <NavLink 
             to='/documents' 
             className={(navData) =>
-              navData.isActive ? "flex bg-brandColor1 text-primary p-2 rounded-md font-semibold" : "flex p-2 font-semibold duration-300 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
+              navData.isActive ? "flex bg-brandColor1 text-primary duration-200 p-2 rounded-md font-bold" : "flex p-2 duration-200 rounded-md text-neutral hover:bg-brandColor1 hover:text-primary"
             }>
               <span className='flex'>
                 <HiOutlineDocumentText size={25}/>
@@ -88,7 +87,7 @@ export function Sidebar(){
         <div className='flex p-3 rounded-lg bg-brandColor1'>
           <span className='flex items-center justify-start'>
             <HiOutlineBell size={25} className='-ml-1 text-brandColor2'/>
-              <span className={`${!open && "opacity-0 overflow-hidden" } pl-3 whitespace-pre duration-200 text-primary font-semibold`}>
+              <span className={`${!open && "opacity-0 overflow-hidden" } pl-3 leading-tight whitespace-pre duration-200 text-primary font-semibold`}>
                 Support Master<br/>Tracker
               </span>
           </span>

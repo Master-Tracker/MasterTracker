@@ -9,11 +9,12 @@ module.exports = {
         secondary: '#CED4DA', //background shade
         tertiary: '#323338', //text color (main black)
         brandColor1: '#3C5B80',
-        brandColor2: '#EE6C4D',
+        brandColor2: '#F0873B',
         neutral: '#74788D', 
         alertGreen: '#52FF00',
         alertYellow: '#EEB000',
-        alertRed: '#DB4437'
+        alertRed: '#DB4437',
+        header: '#CED4DA',
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
