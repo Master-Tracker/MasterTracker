@@ -1,8 +1,54 @@
-import React from 'react'
-import {FileUploader} from 'react-drag-drop-files';
+import React, {useState, useCallback} from 'react';
+import { useDropzone} from 'react-dropzone';
 import { FiUpload } from "react-icons/fi";
 
 export function Documents() {
+
+  const onDrop = useCallback((acceptedFiles: Array<File>) => {
+    const file = new FileReader;
+  
+    file.onload = function() {
+      setPreview(file.result);
+    }
+  
+    file.readAsDataURL(acceptedFiles[0])
+  }, [])
+  
+  const [file, setFile] = useState<File | undefined>();
+  const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop
+  });
+
+  function handleOnChange(e: React.FormEvent<HTMLInputElement>) {
+  const target = e.target as HTMLInputElement & {
+    files: FileList;
+  }
+
+  setFile(target.files[0]);
+
+  const file = new FileReader;
+
+  file.onload = function() {
+    setPreview(file.result);
+  }
+
+  file.readAsDataURL(target.files[0])
+}
+
+  // if ( typeof file === 'undefined' ) return;
+
+  // const formData = new FormData();
+
+  // formData.append('file', file);
+  // formData.append('upload_preset', '<Your Unsigned Upload Preset>');
+  // formData.append('api_key', import.meta.env.VITE_CLOUDINARY_API_KEY);
+
+  // const results = await fetch('https://api.cloudinary.com/v1_1/<Your Cloud Name>/image/upload', {
+  //   method: 'POST',
+  //   body: formData
+  //   }).then(r => r.json());
+  
   return (
     <div className='flex flex-col w-[1000px] mt-16'>
       <div className='p-4 rounded-t-md bg-header'>
@@ -10,17 +56,20 @@ export function Documents() {
       </div>
       <div className='p-12 rounded-b-sm shadow-md'>
         <p className='items-start text-sm text-neutral'>Upload documents you want to store </p>
-        <div className='mt-4'>
-          <FileUploader
-            // handleFiles={handleDrop}
-            multiple
-          >
-            <div className='flex flex-col bg-[#F0F4F8] items-center justify-center w-full cursor-pointer' style={{ padding: '28px', border: '2px dashed #707070', textAlign: 'center', borderRadius: '8px' }}>
-              <FiUpload className='mb-4 text-neutral' size={20}/>
-              <p className='text-neutral'>Drag and Drop or <span className='cursor-pointer text-brandColor1 hover:underline'>Browse</span> Files Here </p>
-            </div>
-          </FileUploader>
+        <div className={`bg-[#F0F4F8] mt-4 border-dashed rounded-md border-2 p-8 items-center flex flex-col ${isDragActive ? '' : 'border-[#707070]'}`}>
+        <div {...getRootProps()}>
+          <input {...getInputProps()} />
+          {
+            isDragActive ?
+              <p className='text-neutral'><FiUpload size={20} className='flex items-center w-full mb-2'/>Drop the files here ...</p> :
+              <p className='cursor-pointer text-neutral'><FiUpload size={20} className='flex items-center w-full mb-2'/>Drag and Drop or <span className='text-brandColor1'>Browse</span> Files Here</p>
+          }
         </div>
+          {preview && (
+            <p className='w-[35%] mt-4'><img src={preview as string} alt="Upload preview" /></p>
+          )}
+        </div>
+        <button className='p-2 mt-4 font-semibold rounded-md w-28 text-brandColor1 bg-secondary' type='submit'>Submit</button>
       </div>
     </div>
   )
